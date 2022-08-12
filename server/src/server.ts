@@ -11,7 +11,7 @@ import {Server} from 'socket.io'
 import http  from "http"
 import SocketServer from './socketServer'
 import router from './routes'
-
+import { errorHandler,notFound } from './middlewares/errors';
 import './config/db'
  
 const app = express()
@@ -26,10 +26,10 @@ app.use(express.static('public'))
 app.use('/', router)
 
 // 404 error
-// app.use(notFound)
+app.use(notFound)
 
 // Error handler
-// app.use(errorHandler)
+app.use(errorHandler)
 
 const server = http.createServer(app);
 const io = new Server(server);
