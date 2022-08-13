@@ -25,7 +25,7 @@ app.use(express.static('public'))
 
 app.use('/', router)
 
-// 404 error
+// 404 error 
 app.use(notFound)
 
 // Error handler
